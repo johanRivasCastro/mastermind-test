@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "360px",
     minHeight: "600px",
     margin: "50px auto",
-    background: "#CA8E5A",
+    background: "#71CEED",
+    border: "1px solid #128CBA",
   },
   title: {
     fontFamily: "Open Sans Condensed",
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    border: "3px solid #C0C0C0",
+    border: "1.5px solid #128CBA",
     padding: "5px",
     maxWidth: "248px",
     borderRadius: "6px",
@@ -37,11 +38,13 @@ const useStyles = makeStyles((theme) => ({
   },
   restartButton: {
     marginLeft: "auto",
-    color: "#F5F5F5 !important",
-    borderColor: "#F5F5F5 !important",
+    color: "#FFF !important",
+    backgroundColor: "#F89B07",
+    borderColor: "#FFF !important",
     "&:disabled": {
-      color: "#BDBDBD !important",
-      borderColor: "#BDBDBD !important",
+      color: "#F9DDA3 !important",
+      borderColor: "#fff !important",
+      backgroundColor: "#BDBDBD",
     },
   },
 }));
