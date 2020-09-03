@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/mastermind-test/static/js/main.d916fbc8.chunk.js",
+    "main.js.map": "/mastermind-test/static/js/main.d916fbc8.chunk.js.map",
+    "runtime-main.js": "/mastermind-test/static/js/runtime-main.2f121cb3.js",
+    "runtime-main.js.map": "/mastermind-test/static/js/runtime-main.2f121cb3.js.map",
+    "static/js/2.0fa7c689.chunk.js": "/mastermind-test/static/js/2.0fa7c689.chunk.js",
+    "static/js/2.0fa7c689.chunk.js.map": "/mastermind-test/static/js/2.0fa7c689.chunk.js.map",
+    "index.html": "/mastermind-test/index.html",
+    "precache-manifest.4e927699474aa0971ccf7c897ed0683f.js": "/mastermind-test/precache-manifest.4e927699474aa0971ccf7c897ed0683f.js",
+    "service-worker.js": "/mastermind-test/service-worker.js",
+    "static/js/2.0fa7c689.chunk.js.LICENSE.txt": "/mastermind-test/static/js/2.0fa7c689.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f121cb3.js",
+    "static/js/2.0fa7c689.chunk.js",
+    "static/js/main.d916fbc8.chunk.js"
+  ]
+}
