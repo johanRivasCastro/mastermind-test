@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: "Open Sans Condensed",
     textAlign: "center",
-    fontSize: "25px",
+    fontSize: "35px",
     fontWeight: "bold",
     color: "#F5F5F5",
   },
