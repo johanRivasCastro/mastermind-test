@@ -78,7 +78,8 @@ const Dashboard = () => {
     row++;
     if (row > 9) {
       await Confirm.show({
-        message: "You have exhausted all attempts",
+        message: "You have exhausted all attempts, the right code is",
+        content: <CrackedCode colorsCode={colorsCode} />,
       });
     }
     setCurrentRow(row);
@@ -116,11 +117,12 @@ const Dashboard = () => {
             label="Reestart"
           />
         </Box>
-        {correctCode && (
-          <Box className={styles.rightColorsCodeBox}>
-            <CrackedCode colorsCode={colorsCode} />
-          </Box>
-        )}
+        {correctCode ||
+          (currentRow > 9 && (
+            <Box className={styles.rightColorsCodeBox}>
+              <CrackedCode colorsCode={colorsCode} />
+            </Box>
+          ))}
 
         {[...Array(10)].map((e, i) => (
           <AppContext.Provider
