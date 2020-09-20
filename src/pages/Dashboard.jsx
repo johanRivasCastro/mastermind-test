@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, createContext } from "react";
 import { Card, CardContent, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ColorsRow from "../components/ColorsRow";
@@ -6,6 +6,13 @@ import COLORS from "../utils/colors";
 import ColorsHole from "../components/ColorsHole";
 import Confirm from "../components/DynamicDialog";
 import CustomButton from "../components/CustomButton";
+
+export const AppContext = createContext({
+  colorsCode: null,
+  updateCurrentRow: () => {},
+  onCorrectCodeApplied: () => {},
+  allowedActions: false,
+});
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -116,13 +123,16 @@ const Dashboard = () => {
         )}
 
         {[...Array(10)].map((e, i) => (
-          <ColorsRow
+          <AppContext.Provider
+            value={{
+              colorsCode: colorsCode,
+              updateCurrentRow: updateCurrentRow,
+              onCorrectCodeApplied: onCorrectCodeApplied,
+            }}
             key={i}
-            colorsCode={colorsCode}
-            allowedActions={i === currentRow}
-            updateCurrentRow={updateCurrentRow}
-            onCorrectCodeApplied={onCorrectCodeApplied}
-          />
+          >
+            <ColorsRow allowedActions={i === currentRow} />
+          </AppContext.Provider>
         ))}
       </CardContent>
     </Card>

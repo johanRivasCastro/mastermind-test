@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import CustomButton from "./CustomButton";
+import { AppContext } from "../pages/Dashboard";
 
 const useStyles = makeStyles((theme) => ({
   mainBox: {
@@ -23,15 +24,12 @@ const SmallHole = ({ color }) => {
   return <Box className={styles.smallHole} style={{ background: color }} />;
 };
 
-const MatchScore = ({
-  colorsCode,
-  userColorsCode,
-  allowedActions,
-  updateCurrentRow = () => {},
-  onCorrectCodeApplied = () => {},
-}) => {
+const MatchScore = ({ userColorsCode, allowedActions }) => {
   const styles = useStyles();
   const [matchColors, setMatchColors] = React.useState([]);
+  const { updateCurrentRow, onCorrectCodeApplied, colorsCode } = useContext(
+    AppContext
+  );
 
   const allRowColorsSelected = () => {
     return Object.keys(userColorsCode).length === 4;

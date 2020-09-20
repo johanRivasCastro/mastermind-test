@@ -14,12 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ColorsRow = ({
-  colorsCode,
-  allowedActions,
-  updateCurrentRow = () => {},
-  onCorrectCodeApplied = () => {},
-}) => {
+const ColorsRow = ({ colorsCode, allowedActions }) => {
   const styles = useStyles();
 
   const [userColorsCode, setUserColorsCode] = useState({});
@@ -38,11 +33,8 @@ const ColorsRow = ({
   return (
     <Box className={styles.mainBox}>
       <MatchScore
-        colorsCode={colorsCode}
         userColorsCode={userColorsCode}
         allowedActions={allowedActions}
-        updateCurrentRow={updateCurrentRow}
-        onCorrectCodeApplied={onCorrectCodeApplied}
       />
       <Box
         display="flex"
@@ -54,7 +46,6 @@ const ColorsRow = ({
           <ColorsHole
             key={i}
             holeIndex={i}
-            colorsCode={colorsCode}
             onSelectedColor={onSelectedColor}
             allowedActions={allowedActions}
           />

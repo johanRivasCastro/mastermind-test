@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box, Popper, Paper, ClickAwayListener, Grow } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import COLORS from "../utils/colors";
+import { AppContext } from "../pages/Dashboard";
 
 const useStyles = makeStyles((theme) => ({
   hole: {
@@ -38,13 +39,13 @@ const ColorsHole = ({
   allowedActions,
   onSelectedColor = () => {},
   color = null,
-  colorsCode,
 }) => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
   const [selectedColor, setSelectedColor] = useState("");
   const anchorRef = React.useRef(null);
+  const { colorsCode } = useContext(AppContext);
 
   const handleToggle = () => {
     if (allowedActions) setOpen((prevOpen) => !prevOpen);
