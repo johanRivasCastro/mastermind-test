@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
-import { Box, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import CustomButton from "./CustomButton";
 
 const useStyles = makeStyles((theme) => ({
   mainBox: {
@@ -117,15 +118,11 @@ const MatchScore = ({
   return (
     <>
       {allowedActions ? (
-        <Button
-          className={styles.checkButton}
-          size="small"
-          variant="outlined"
-          disabled={!allRowColorsSelected()}
+        <CustomButton
+          label="Check"
           onClick={handleClickValidateUserCode}
-        >
-          Check
-        </Button>
+          disabled={!allRowColorsSelected()}
+        />
       ) : (
         <Box className={styles.mainBox}>
           <Box display="flex" flexDirection="row">

@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Card, CardContent, Box, Button } from "@material-ui/core";
+import { Card, CardContent, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ColorsRow from "../components/ColorsRow";
 import COLORS from "../utils/colors";
 import ColorsHole from "../components/ColorsHole";
 import Confirm from "../components/DynamicDialog";
+import CustomButton from "../components/CustomButton";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -35,17 +36,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
     marginLeft: "61px",
-  },
-  restartButton: {
-    marginLeft: "auto",
-    color: "#FFF !important",
-    backgroundColor: "#F89B07",
-    borderColor: "#FFF !important",
-    "&:disabled": {
-      color: "#F9DDA3 !important",
-      borderColor: "#fff !important",
-      backgroundColor: "#BDBDBD",
-    },
   },
 }));
 
@@ -113,15 +103,11 @@ const Dashboard = () => {
           Mastermind
         </Box>
         <Box display="flex" justifyContent="flex-end" mr={2} mb={2}>
-          <Button
-            className={styles.restartButton}
-            size="small"
-            variant="outlined"
+          <CustomButton
             disabled={currentRow < 1}
             onClick={handleClickReestart}
-          >
-            Reestart
-          </Button>
+            label="Reestart"
+          />
         </Box>
         {correctCode && (
           <Box className={styles.rightColorsCodeBox}>
