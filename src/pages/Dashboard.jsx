@@ -133,7 +133,10 @@ const Dashboard = () => {
             }}
             key={i}
           >
-            <ColorsRow allowedActions={i === currentRow} />
+            <ColorsRow
+              allowedActions={i === currentRow}
+              colorsCode={colorsCode}
+            />
           </AppContext.Provider>
         ))}
       </CardContent>
