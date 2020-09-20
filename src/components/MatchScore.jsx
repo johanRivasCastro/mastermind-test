@@ -16,16 +16,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "4px",
     background: "#F9DDA3",
   },
-  checkButton: {
-    color: "#FFF !important",
-    backgroundColor: "#F89B07",
-    borderColor: "#FFF !important",
-    "&:disabled": {
-      color: "#F9DDA3 !important",
-      borderColor: "#fff !important",
-      backgroundColor: "#BDBDBD",
-    },
-  },
 }));
 
 const SmallHole = ({ color }) => {
