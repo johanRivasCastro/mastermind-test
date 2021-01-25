@@ -1,4 +1,4 @@
-import React from "react";
+import React, {MouseEventHandler} from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Button } from "@material-ui/core";
 
@@ -15,7 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CustomButton = ({ onClick = () => {}, label, ...rest }) => {
+interface Props {
+  onClick: MouseEventHandler,
+  label: string,
+  disabled:boolean
+}
+
+const CustomButton:React.FC<Props> = ({ onClick = () => {}, label, ...rest }) => {
   const styles = useStyles();
   return (
     <Button

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, SyntheticEvent } from "react";
 import { Box, Popper, Paper, ClickAwayListener, Grow } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import COLORS from "../utils/colors";
@@ -34,7 +34,14 @@ const useStyles = makeStyles((theme) => ({
 let colors1 = COLORS.slice(0, 3);
 let colors2 = COLORS.slice(2 + 1);
 
-const ColorsHole = ({
+interface Props {
+  holeIndex: number;
+  allowedActions?: boolean;
+  onSelectedColor?: (holeIndex: number, color: string) => void;
+  color: string;
+}
+
+const ColorsHole: React.FC<Props> = ({
   holeIndex,
   allowedActions,
   onSelectedColor = () => {},
@@ -44,36 +51,37 @@ const ColorsHole = ({
 
   const [open, setOpen] = React.useState(false);
   const [selectedColor, setSelectedColor] = useState("");
-  const anchorRef = React.useRef(null);
+  const anchorRef = React.useRef<HTMLDivElement>(null);
   const { colorsCode } = useContext(AppContext);
 
   const handleToggle = () => {
     if (allowedActions) setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) return;
+  const handleClose = () => {
+    // if (anchorRef.current && anchorRef.current.contains(event.target)) return;
     setOpen(false);
   };
 
-  const handleClickSetColor = (e, color) => {
+  const handleClickSetColor = (e: SyntheticEvent, color: string) => {
     setSelectedColor(color);
     onSelectedColor(holeIndex, color);
-    handleClose(e);
+    setOpen(false);
   };
 
   useEffect(() => {
-    setSelectedColor([]);
+    setSelectedColor("");
   }, [colorsCode]);
 
   return (
     <>
-      <Box
-        ref={anchorRef}
-        className={styles.hole}
-        onClick={handleToggle}
-        style={{ background: color ? color : selectedColor }}
-      ></Box>
+      <div ref={anchorRef}>
+        <Box
+          className={styles.hole}
+          onClick={handleToggle}
+          style={{ background: color ? color : selectedColor }}
+        />
+      </div>
       <Popper
         open={open}
         anchorEl={anchorRef.current}
